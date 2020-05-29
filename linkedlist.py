@@ -28,6 +28,18 @@ class Linkedlist:
         newnode.next=self.head
         self.head=newnode
 
+    def insertpos(self,newnode,pos):
+       temp,index=self.head,0
+       while pos!=index:
+            prevnode=temp
+            temp=temp.next
+            index=index+1
+       prevnode.next=newnode
+       newnode.next=temp
+
+
+
+
 
 
     def printlist(self):
@@ -36,11 +48,22 @@ class Linkedlist:
            return
        loop=self.head
        while True:
-           if loop is None:
-               break
+           if loop.next==None:
+               print(loop.value)
+               return
            print(loop.value)
            loop=loop.next
 
+    def length(self):
+      count,temp=0,self.head
+      if self.head==None:
+          return None
+      else:
+          while True:
+              count=count+1
+              if temp.next==None:
+                  return count
+              temp=temp.next
 
 
 node1=Node(3)
@@ -48,6 +71,11 @@ var1=Linkedlist()
 var1.insertend(node1)
 node2=Node(4)
 var1.insertend(node2)
-node3=Node(5)
-var1.insertbegin(node3)
+node3=Node(6)
+node4=Node(8)
+var1.insertend(node4)
+var1.insertpos(node3,2)
+
+
 var1.printlist()
+print("The length is ",var1.length())
