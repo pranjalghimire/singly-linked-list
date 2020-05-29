@@ -1,4 +1,6 @@
 class Node:
+
+
     def __init__(self,value):
         self.value=value
         self.next=None
@@ -6,9 +8,14 @@ class Node:
 
 
 
+
+
 class Linkedlist:
+
+
     def __init__(self):
         self.head=None
+
 
 
     def insertend(self,newnode):
@@ -28,6 +35,8 @@ class Linkedlist:
         newnode.next=self.head
         self.head=newnode
 
+
+
     def insertpos(self,newnode,pos):
        temp,index=self.head,0
        while pos!=index:
@@ -36,6 +45,46 @@ class Linkedlist:
             index=index+1
        prevnode.next=newnode
        newnode.next=temp
+
+
+    def deleteend(self):
+
+       temp=self.head
+       if temp==None:
+           print("cannot deleteend")
+           return
+       if temp.next==None:
+          self.head=None
+          return
+       while True:
+           prevnode=temp
+           temp=temp.next
+           if temp.next==None:
+               prevnode.next=None
+               return
+
+
+
+    def deletehead(self):
+           temp=self.head
+           self.head=self.head.next
+           temp.next=None
+
+
+    def deletepos(self,position):
+       temp,count=self.head,0
+       if position==0:
+           self.deletehead()
+           return
+       while position!=count:
+           prevnode=temp
+           temp=temp.next
+           count=count+1
+       prevnode.next=temp.next
+       temp.next=None
+
+
+
 
 
 
@@ -54,10 +103,12 @@ class Linkedlist:
            print(loop.value)
            loop=loop.next
 
+
+
     def length(self):
       count,temp=0,self.head
       if self.head==None:
-          return None
+          return 0
       else:
           while True:
               count=count+1
@@ -75,6 +126,10 @@ node3=Node(6)
 node4=Node(8)
 var1.insertend(node4)
 var1.insertpos(node3,2)
+var1.deletepos(2)
+var1.deleteend()
+var1.deletehead()
+
 
 
 var1.printlist()
