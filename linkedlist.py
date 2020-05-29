@@ -11,7 +11,7 @@ class Linkedlist:
         self.head=None
 
 
-    def insert(self,newnode):
+    def insertend(self,newnode):
         if self.head is None:
             self.head=newnode
         else:
@@ -21,6 +21,13 @@ class Linkedlist:
                     break
                 loop=loop.next
             loop.next=newnode
+
+
+
+    def insertbegin(self,newnode):
+        newnode.next=self.head
+        self.head=newnode
+
 
 
     def printlist(self):
@@ -38,9 +45,9 @@ class Linkedlist:
 
 node1=Node(3)
 var1=Linkedlist()
-var1.insert(node1)
+var1.insertend(node1)
 node2=Node(4)
-var1.insert(node2)
+var1.insertend(node2)
 node3=Node(5)
-var1.insert(node3)
+var1.insertbegin(node3)
 var1.printlist()
